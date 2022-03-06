@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "pizza_jwtPrivateKey",
+    "db": "pizza_db"
+}
