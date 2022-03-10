@@ -1,14 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const _ = require('lodash');
 const {User, validateUsers} = require('../models/orderModel');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
-const jwt = require('jsonwebtoken');
-const config = require('config');
 const validateObjectId = require('../middleware/validateObjectId');
-const expirationTime = 86400;
 
 router.get('/', async (req,res) => {
     const users = await User.find().sort('lastname');
@@ -28,12 +24,7 @@ router.post('/', async (req,res) => {
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     user = await user.save();
-    
-    const token = jwt.sign({id: user._id}, config.get('jwtPrivateKey'), {
-        expiresIn: expirationTime
-    });
-    
-    res.status(200).send({auth: true, token: token });    
+    res.send(user);    
 });
 
 router.put('/:id', [auth, admin, validateObjectId], async (req,res) => {
