@@ -52,7 +52,7 @@ router.post('/', auth, async (req,res) => {
         req.body.breadsticks, req.body.drinks, req.body.total, req.body.user);
 });
 
-router.put('/:id', [auth, admin, validateObjectId], async (req,res) => {
+router.put('/:id', [auth, validateObjectId], async (req,res) => {
     const {error} = validateOrders(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     
@@ -62,7 +62,7 @@ router.put('/:id', [auth, admin, validateObjectId], async (req,res) => {
     res.send(order);
 });
 
-router.delete('/:id', [auth,admin, validateObjectId], async (req,res) => {
+router.delete('/:id', [auth, admin, validateObjectId], async (req,res) => {
     const order = await Order.findByIdAndRemove(req.params.id);
     if (!order) return res.status(404).send("Invalid ID.");
     res.send(order);
