@@ -12,3 +12,5 @@
 {"level":"info","message":"Connected to mongodb://localhost/pizza...","timestamp":"2022-01-20T18:34:07.412Z"}
 {"level":"info","message":"Listening on port 3000...","timestamp":"2022-01-20T18:51:22.375Z"}
 {"level":"info","message":"Connected to mongodb://localhost/pizza...","timestamp":"2022-01-20T18:51:22.395Z"}
+{"level":"info","message":"Listening on port 3000...","timestamp":"2022-03-11T03:37:55.496Z"}
+{"level":"info","message":"Connected to mongodb://localhost/pizza...","timestamp":"2022-03-11T03:37:55.522Z"}
